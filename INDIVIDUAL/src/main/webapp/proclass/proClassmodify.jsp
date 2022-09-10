@@ -8,17 +8,5 @@
 </head>
 <body>
 
-	<table border="1">
-		<tr>
-			<td>ddd</td>
-		</tr>
-		
-				
-	
-	
-	</table>
-
-
-
 </body>
 </html>
