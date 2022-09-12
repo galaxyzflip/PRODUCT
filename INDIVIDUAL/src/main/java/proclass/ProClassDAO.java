@@ -162,7 +162,7 @@ public class ProClassDAO {
 		
 	}
 	
-	public ProClassBean[] proClassList() {
+	public ProClassBean[] getProClassList() {
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;

@@ -5,7 +5,7 @@
 
 <%
 	ProClassDAO manager = ProClassDAO.getInstance();
-	ProClassBean[] list = manager.proClassList();
+	ProClassBean[] list = manager.getProClassList();
 	
 %>
 

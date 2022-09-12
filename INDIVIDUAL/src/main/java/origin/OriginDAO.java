@@ -93,7 +93,7 @@ public class OriginDAO {
 	}
 	
 	@SuppressWarnings("resource")
-	public OriginBean[] originList () {
+	public OriginBean[] getOriginList () {
 		
 		OriginBean[] list = null;
 		Connection conn = null;
@@ -105,12 +105,14 @@ public class OriginDAO {
 			
 			pstmt = conn.prepareStatement("select count(1) from product_origin");
 			rs = pstmt.executeQuery();
-			rs.next();
-			count = rs.getInt("count(1)");
+
+			if(rs.next()){
+				count = rs.getInt("count(1)");
+			}
 			
 			list = new OriginBean[count];
 			
-			pstmt = conn.prepareCall("select * from product_origin order by origin_code asc");
+			pstmt = conn.prepareStatement("select * from product_origin order by origin_code asc");
 			rs = pstmt.executeQuery();
 			
 			for(int i=0;i<list.length;i++) {

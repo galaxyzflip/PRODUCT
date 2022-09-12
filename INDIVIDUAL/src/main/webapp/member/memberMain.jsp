@@ -45,14 +45,17 @@
 
 	<table border="1">
 		<tr>
-			<td>상품 관리</td>
+			<td><a href="../product/productMain.jsp">상품 관리</a></td>
 		</tr>
+		
 		<tr>
-			<td>원산지 관리</td>
+			<td><a href="../origin/originMain.jsp">원산지 관리</a></td>
 		</tr>
+		
 		<tr>
-			<td>상품 분류 관리</td>
+			<td><a href="../proclass/proClassMain.jsp">상품 분류 관리</a></td>
 		</tr>
+		
 		<tr>
 			<td><a href="memberLogout.jsp">로그아웃</a></td>
 		</tr>

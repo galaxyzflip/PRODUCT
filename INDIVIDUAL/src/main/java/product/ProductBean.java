@@ -10,11 +10,12 @@ public class ProductBean {
 
 	private String productCode;
 	private String productName;
-	private String classCode;
-	private String originCode;
-	private String price;
+	private String productClass;
+	private String productOrigin;
+	private String productPrice;
 	private Timestamp regDate;
 	private String regMember;
+	private int productStock;
 	
 	
 	public String getProductCode() {
@@ -29,23 +30,23 @@ public class ProductBean {
 	public void setProductName(String productName) {
 		this.productName = productName;
 	}
-	public String getClassCode() {
-		return classCode;
+	public String getProductClass() {
+		return productClass;
 	}
-	public void setClassCode(String classCode) {
-		this.classCode = classCode;
+	public void setProductClass(String productClass) {
+		this.productClass = productClass;
 	}
-	public String getOriginCode() {
-		return originCode;
+	public String getProductOrigin() {
+		return productOrigin;
 	}
-	public void setOriginCode(String originCode) {
-		this.originCode = originCode;
+	public void setProductOrigin(String productOrigin) {
+		this.productOrigin = productOrigin;
 	}
-	public String getPrice() {
-		return price;
+	public String getProductPrice() {
+		return productPrice;
 	}
-	public void setPrice(String price) {
-		this.price = price;
+	public void setProductPrice(String productPrice) {
+		this.productPrice = productPrice;
 	}
 	public Timestamp getRegDate() {
 		return regDate;
@@ -59,7 +60,12 @@ public class ProductBean {
 	public void setRegMember(String regMember) {
 		this.regMember = regMember;
 	}
-	
+	public int getProductStock() {
+		return productStock;
+	}
+	public void setProductStock(int productStock) {
+		this.productStock = productStock;
+	}
 	
 	
 }

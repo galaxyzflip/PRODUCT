@@ -1,12 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="origin.*" %>
-<%@ page import="java.sql.*" %>
 
 <% 
 	request.setCharacterEncoding("utf-8");
 	OriginDAO manager = OriginDAO.getInstance();
-	OriginBean[] bean = manager.originList();
+	OriginBean[] bean = manager.getOriginList();
 %>
 
 
@@ -14,7 +13,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>Insert title here</title>
+<title>원산지 목록</title>
 </head>
 <body>
 <table border="1">
