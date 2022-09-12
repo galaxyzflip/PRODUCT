@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 public class OriginBean {
 	
 	private String originCode;
-	private String originNa;
+	private String originNation;
 	private Timestamp originRegdate;
 	
 	
@@ -14,11 +14,12 @@ public class OriginBean {
 	public void setOriginCode(String originCode) {
 		this.originCode = originCode;
 	}
-	public String getOriginNa() {
-		return originNa;
+
+	public String getOriginNation() {
+		return originNation;
 	}
-	public void setOriginNa(String originNa) {
-		this.originNa = originNa;
+	public void setOriginNation(String originNation) {
+		this.originNation = originNation;
 	}
 	public Timestamp getOriginRegdate() {
 		return originRegdate;

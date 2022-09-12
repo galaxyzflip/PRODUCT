@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.sql.DriverManager;
 
 
+
 public class MemberDAO {
 
 		private static MemberDAO instance = new MemberDAO();
@@ -25,6 +26,9 @@ public class MemberDAO {
 			return conn = DriverManager.getConnection(jdbcDriver);
 					
 		}
+		
+	
+		
 		//회원가입
 		public void inputMember(MemberBean member) {
 			
@@ -88,7 +92,7 @@ public class MemberDAO {
 		}
 		
 		//정보 수정
-		public void modifyMember(MemberBean member) {
+		public void modifyMember(MemberBean member) throws Exception {
 			
 			Connection conn = null;
 			PreparedStatement pstmt = null;
@@ -99,6 +103,7 @@ public class MemberDAO {
 				pstmt.setString(1, member.getMemberPasswd());
 				pstmt.setString(2, member.getMemberName());
 				pstmt.setString(3, member.getMemberId());
+				pstmt.executeUpdate();
 				
 			}catch(Exception ex) {
 				ex.printStackTrace();

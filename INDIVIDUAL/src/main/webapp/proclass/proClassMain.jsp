@@ -11,15 +11,15 @@
 
 <table border="1" width="100">
 	<tr>
-		<td>등록</td>
+		<td><a href="proClassRegForm.jsp"><h>등록</h></a></td>
 	</tr>
 	
 	<tr>
-		<td>조회</td>
+		<td><a href="proClassList2.jsp"><h>조회</h></a></td>
 	</tr>
 	
 	<tr>
-		<td>메인</td>
+		<td><a href="proClassRegForm.jsp"><h>메인</h></a></td>
 	</tr>
 	
 	

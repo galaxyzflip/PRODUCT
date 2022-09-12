@@ -10,7 +10,10 @@
 
 	<table border="1">
 		<tr>
-			<td>ddd</td>
+			<td><a href="originInputForm.jsp">등록</a></td>
+		</tr>
+		<tr>
+			<td><a href="originList.jsp">조회</a></td>
 		</tr>
 		
 				

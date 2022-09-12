@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.sql.ResultSet;
+import java.sql.Statement;
 
 
 
@@ -32,10 +33,20 @@ public class ProClassDAO {
 		return conn = DriverManager.getConnection(jdbcDriver);
 	}
 	
+	//테스트용
+	public Connection getConnection2() throws SQLException{
+		Connection conn = null;
+		String jdbcDriver = "jdbc:apache:commons:dbcp:/pool";
+		return conn = DriverManager.getConnection(jdbcDriver);
+	}
+	
+
+	
 	// 입력 메소드 - 등록 inputProClass
 	// 출력 메소드 - 수정할때 getProClass
 	// 수정 메소드 - modifyProClass
 	// 삭제 메소드 = deleteProClass
+	// 리스트 메소드 - proClassList
 	
 	public void inputProClass(ProClassBean proClass) {
 		Connection conn = null;
@@ -79,12 +90,15 @@ public class ProClassDAO {
 			pstmt = conn.prepareStatement("select * from product_class where class_code = ?");
 			pstmt.setString(1, classCode);
 			rs = pstmt.executeQuery();
-			
-			para.setProClassCode(rs.getString("class_code"));
-			para.setProClassName(rs.getString("class_name"));
-			para.setProClassRegdate(rs.getTimestamp("reg_date"));
-			para.setProClassDescription(rs.getString("class_description"));
-			
+			if(rs.next()) {
+
+				para.setProClassCode(rs.getString("class_code"));
+				para.setProClassName(rs.getString("class_name"));
+				para.setProClassRegdate(rs.getTimestamp("reg_date"));
+				para.setProClassDescription(rs.getString("class_description"));
+					
+			}
+				
 			
 		}catch(Exception ex) {
 			ex.printStackTrace();
@@ -108,7 +122,7 @@ public class ProClassDAO {
 		
 		try {
 			conn = getConnection();
-			pstmt = conn.prepareStatement("update product_class set  class_name = ?, class_description = ? where class_code = ? ");
+			pstmt = conn.prepareStatement("update product_class set class_name = ?, class_description = ? where class_code = ? ");
 			pstmt.setString(1, bean.getProClassName());
 			pstmt.setString(2, bean.getProClassDescription());
 			pstmt.setString(3, bean.getProClassCode());
@@ -132,7 +146,7 @@ public class ProClassDAO {
 		
 		try {
 			conn = getConnection();
-			pstmt = conn.prepareStatement("delete from product_class where id=?");
+			pstmt = conn.prepareStatement("delete from product_class where class_code=?");
 			pstmt.setString(1, code);
 			pstmt.executeUpdate();
 			
@@ -145,6 +159,60 @@ public class ProClassDAO {
 			if(pstmt != null) try {pstmt.close();} catch(SQLException ex) {}
 			if(conn != null) try {conn.close();} catch(SQLException ex) {}
 		}
+		
+	}
+	
+	public ProClassBean[] proClassList() {
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		PreparedStatement row = null;
+		ResultSet rs = null;
+		ResultSet rs2 = null;
+		ProClassBean[] classList = null;
+		int count = 0;
+		
+		
+		try {
+			conn = getConnection();
+			row = conn.prepareStatement("select count(1) from product_class");
+			rs = row.executeQuery();
+			if(rs.next()) {
+				count = rs.getInt("count(1)");
+			}
+			
+			pstmt = conn.prepareStatement("select * from product_class");
+			
+			rs2 = pstmt.executeQuery();
+			
+			
+			
+			classList = new ProClassBean[count];
+			int i = 0;
+
+			while(rs2.next()) {
+				classList[i] = new ProClassBean();
+				classList[i].setProClassCode(rs2.getString("class_code"));
+				classList[i].setProClassName(rs2.getString("class_name"));
+				classList[i].setProClassRegdate(rs2.getTimestamp("reg_date"));
+				classList[i].setProClassDescription(rs2.getString("class_description"));
+				i++;
+				
+			}
+			
+			
+		}catch(Exception ex) {
+			ex.printStackTrace();  
+			   
+		}finally {
+			if(rs != null) try {rs.close();} catch(SQLException ex) {}
+			if(rs2 != null) try {rs2.close();} catch(SQLException ex) {}
+			if(pstmt != null) try {pstmt.close();} catch(SQLException ex) {}
+			if(row != null) try {row.close();} catch(SQLException ex) {}
+			if(conn != null) try {conn.close();} catch(SQLException ex) {}
+			
+		}
+		return classList ;
 		
 	}
 	

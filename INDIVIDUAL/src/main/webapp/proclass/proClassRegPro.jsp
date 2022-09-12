@@ -14,6 +14,6 @@
 	ProClassDAO manager = ProClassDAO.getInstance();
 	manager.inputProClass(classparam);
 	
-	response.sendRedirect("ProClassRegForm.jsp");
+	response.sendRedirect("proClassList2.jsp");
 
 %>

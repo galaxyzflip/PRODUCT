@@ -22,7 +22,7 @@
 	</tr>
 	
 	<tr>
-		<td>분류명</td>
+		<td>분류설명</td>
 		<td><input type="text" name="proClassDescription"></td>
 	</tr>
 	
